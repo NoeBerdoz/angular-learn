@@ -27,7 +27,7 @@ import {CoursesService} from './courses.service';
           <li>{{ course.releaseDate | date:'mediumDate'}}</li> <!-- DatePipe on angular.io for more pipes -->
         </ul>
         <h2>Custom Pipe</h2>
-        {{ custompipeText | summary }}
+        {{ custompipeText | summary:10 }}
 
 
   `
