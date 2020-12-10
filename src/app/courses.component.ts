@@ -18,9 +18,27 @@ import {CoursesService} from './courses.service';
         <img src="{{ imageUrl }}" width="150px"/>
         <img [src]="imageUrl" [width]="200"  />
         <input [(ngModel)]="email" (keyup.enter)="email = $event.target.value; onKeyUp()" />
+        <h2>Let's do some pipes</h2>
+        <ul>
+          <li>{{ course.title | uppercase }}</li>
+          <li>{{ course.students | number }}</li>
+          <li>{{ course.rating | number:'1.1-1' }}</li>
+          <li>{{ course.price | currency:'CHF'}}</li>
+          <li>{{ course.releaseDate | date:'mediumDate'}}</li> <!-- DatePipe on angular.io for more pipes -->
+        </ul>
+
+
   `
 })
 export class CoursesComponent {
+  course = {
+    title: "Un cours Angular",
+    rating: 5,
+    students: 50000,
+    price: 16,
+    releaseDate: new Date(2016, 3, 1)
+  }
+
   isActive = true;
   email = "me@example.com";
   onKeyUp() {
