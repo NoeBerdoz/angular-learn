@@ -26,11 +26,18 @@ import {CoursesService} from './courses.service';
           <li>{{ course.price | currency:'CHF'}}</li>
           <li>{{ course.releaseDate | date:'mediumDate'}}</li> <!-- DatePipe on angular.io for more pipes -->
         </ul>
+        <h2>Custom Pipe</h2>
+        {{ custompipeText | summary }}
 
 
   `
 })
 export class CoursesComponent {
+
+  custompipeText = `
+  Lorem Ipsum This Is My First Custom Pipe
+  `
+
   course = {
     title: "Un cours Angular",
     rating: 5,
