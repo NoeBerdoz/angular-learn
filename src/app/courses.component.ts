@@ -5,9 +5,9 @@ import {CoursesService} from './courses.service';
 @Component({
   selector: 'courses',
   template: `
-        <button class="btn btn-primary" (click)="onSave($event)" [style.backgroundColor]="isActive ? '#45e43a' : '#e288c3'">Hey</button>
+        <button class="btn btn-primary" (click)="onSave()" [style.backgroundColor]="isActive ? '#45e43a' : '#e288c3'">Hey</button>
         <div (click)="onDivClick()">
-          <button class="btn badge-secondary" (click)="onSave($event)">OnDivClick</button>
+          <button class="btn badge-secondary" (click)="onSave()">OnDivClick</button>
         </div>
         <h2>{{ title }}</h2>
         <ul>
@@ -17,22 +17,22 @@ import {CoursesService} from './courses.service';
         </ul>
         <img src="{{ imageUrl }}" width="150px"/>
         <img [src]="imageUrl" [width]="200"  />
-        <input (keyup)="onKeyUp($event)"/>
+        <input #email (keyup.enter)="onKeyUp(email.value)" />
   `
 })
 export class CoursesComponent {
   isActive = true;
 
-  onKeyUp($event) {
-    if ($event.keyCode === 13) console.log("Enter was pressed")
+  onKeyUp(email) {
+    console.log(email);
   }
 
   onDivClick() {
     console.log("Div was clicked");
   }
-  onSave($event) {
+  onSave() {
     this.isActive = false;
-    console.log($event);
+    console.log("test");
   }
 
   title = 'List of courses';
