@@ -17,14 +17,14 @@ import {CoursesService} from './courses.service';
         </ul>
         <img src="{{ imageUrl }}" width="150px"/>
         <img [src]="imageUrl" [width]="200"  />
-        <input #email (keyup.enter)="onKeyUp(email.value)" />
+        <input [(ngModel)]="email" (keyup.enter)="email = $event.target.value; onKeyUp()" />
   `
 })
 export class CoursesComponent {
   isActive = true;
-
-  onKeyUp(email) {
-    console.log(email);
+  email = "me@example.com";
+  onKeyUp() {
+    console.log(this.email);
   }
 
   onDivClick() {
